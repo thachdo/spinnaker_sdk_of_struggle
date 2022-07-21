@@ -340,7 +340,7 @@ void acquisition::Capture::read_parameters() {
     ROS_INFO("  Camera IDs:");
     
     std::vector<int> cam_id_vec;
-    ROS_ASSERT_MSG(nh_pvt_.getParam("cam_ids", cam_id_vec),"If cam_aliases are provided, they should be the same number as cam_ids and should correspond in order!");
+    nh_pvt_.getParam("cam_ids", cam_id_vec),"If cam_aliases are provided, they should be the same number as cam_ids and should correspond in order!";
     int num_ids = cam_id_vec.size();
     for (int i=0; i < num_ids; i++){
         cam_ids_.push_back(to_string(cam_id_vec[i]));
@@ -376,7 +376,7 @@ void acquisition::Capture::read_parameters() {
     int mcam_int;
 
     if (!EXTERNAL_TRIGGER_){
-      ROS_ASSERT_MSG(nh_pvt_.getParam("master_cam", mcam_int),"master_cam is required!");
+      nh_pvt_.getParam("master_cam", mcam_int),"master_cam is required!";
     
       master_cam_id_=to_string(mcam_int);
       bool found = false;
